@@ -38,7 +38,7 @@ function Home() {
       <section className="relative overflow-hidden bg-white py-20 border-b border-gray-100">
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="text-6xl mb-4"></div>
-          <h1 className="text-4xl md:text-5xl font-black mb-4 text-black uppercase tracking-tight" style={{fontFamily: 'Montserrat, sans-serif'}}>
+          <h1 className="text-4xl md:text-5xl font-black italic mb-4 text-black uppercase tracking-tight" style={{fontFamily: 'Montserrat, sans-serif', fontStyle: 'italic'}}>
             МИША Kids Shoes
           </h1>
           <p className="text-base mb-8 text-gray-600 max-w-2xl mx-auto">
