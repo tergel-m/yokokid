@@ -16,7 +16,7 @@ import Profile from './pages/Profile';
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900">
+      <div className="flex flex-col min-h-screen bg-white dark:bg-black">
         <Navbar />
         <main className="flex-grow">
           <Routes>
@@ -40,3 +40,4 @@ function App() {
 }
 
 export default App;
+

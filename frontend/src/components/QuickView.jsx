@@ -30,7 +30,7 @@ function QuickView({ product, onClose }) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={onClose}>
-      <div className="bg-white dark:bg-gray-900 max-w-4xl w-full p-8 relative max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+      <div className="bg-white dark:bg-black max-w-4xl w-full p-8 relative max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-500 hover:text-black dark:hover:text-white"
@@ -56,18 +56,18 @@ function QuickView({ product, onClose }) {
                   </svg>
                 ))}
               </div>
-              <span className="text-sm text-gray-600 dark:text-gray-400">(4.5)</span>
+              <span className="text-sm text-gray-600 dark:text-white">(4.5)</span>
             </div>
             <p className="text-3xl font-bold mb-6 dark:text-white">{product.price}</p>
             
             <div className="mb-6">
-              <label className="block text-xs uppercase tracking-wider mb-2 dark:text-gray-300 font-bold">{t('size')}</label>
+              <label className="block text-xs uppercase tracking-wider mb-2 dark:text-white font-bold">{t('size')}</label>
               <div className="flex gap-2 flex-wrap">
                 {['18', '19', '20', '21', '22', '23', '24'].map(size => (
                   <button 
                     key={size} 
                     onClick={() => setSelectedSize(size)}
-                    className={`w-12 h-12 border ${selectedSize === size ? 'border-2 border-black dark:border-white' : 'border-gray-300 dark:border-gray-600'} hover:border-black dark:hover:border-white dark:text-white`}
+                    className={`w-12 h-12 border ${selectedSize === size ? 'border-2 border-black dark:border-white' : 'border-gray-300 dark:border-white'} hover:border-black dark:hover:border-white dark:text-white`}
                   >
                     {size}
                   </button>
@@ -76,18 +76,18 @@ function QuickView({ product, onClose }) {
             </div>
 
             <div className="mb-6">
-              <label className="block text-xs uppercase tracking-wider mb-2 dark:text-gray-300 font-bold">{t('quantity')}</label>
+              <label className="block text-xs uppercase tracking-wider mb-2 dark:text-white font-bold">{t('quantity')}</label>
               <div className="flex items-center gap-4">
                 <button 
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="w-10 h-10 border border-gray-300 dark:border-gray-600 hover:border-black dark:hover:border-white dark:text-white"
+                  className="w-10 h-10 border border-gray-300 dark:border-white hover:border-black dark:hover:border-white dark:text-white"
                 >
                   -
                 </button>
                 <span className="text-lg font-bold dark:text-white">{quantity}</span>
                 <button 
                   onClick={() => setQuantity(quantity + 1)}
-                  className="w-10 h-10 border border-gray-300 dark:border-gray-600 hover:border-black dark:hover:border-white dark:text-white"
+                  className="w-10 h-10 border border-gray-300 dark:border-white hover:border-black dark:hover:border-white dark:text-white"
                 >
                   +
                 </button>
@@ -104,7 +104,7 @@ function QuickView({ product, onClose }) {
               </button>
               <button
                 onClick={handleWishlistToggle}
-                className={`px-6 py-3 border ${inWishlist ? 'border-red-500 text-red-500' : 'border-gray-300 dark:border-gray-600 dark:text-white'}`}
+                className={`px-6 py-3 border ${inWishlist ? 'border-red-500 text-red-500' : 'border-gray-300 dark:border-white dark:text-white'}`}
               >
                 <svg className="w-6 h-6" fill={inWishlist ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -119,3 +119,4 @@ function QuickView({ product, onClose }) {
 }
 
 export default QuickView;
+

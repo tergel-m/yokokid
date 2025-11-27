@@ -47,7 +47,7 @@ function Checkout() {
   const finalTotal = total + shipping;
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-black py-8">
       <div className="container mx-auto px-4">
         <h1 className="text-4xl font-bold mb-8 dark:text-white uppercase" style={{fontFamily: 'Montserrat, sans-serif'}}>
           {t('checkout')}
@@ -257,3 +257,4 @@ function Checkout() {
 }
 
 export default Checkout;
+

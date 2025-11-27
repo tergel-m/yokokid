@@ -32,17 +32,17 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 py-20">
+    <div className="min-h-screen bg-white dark:bg-black py-20">
       <div className="container mx-auto px-4 max-w-md">
         <h1 className="text-3xl font-bold mb-8 dark:text-white uppercase text-center" style={{fontFamily: 'Montserrat, sans-serif'}}>
           {isLogin ? t('login') : t('register')}
         </h1>
 
-        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-8">
+        <div className="bg-white dark:bg-black border border-gray-200 dark:border-white p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {!isLogin && (
               <div>
-                <label className="block text-xs uppercase tracking-wider mb-2 dark:text-gray-300 font-bold">
+                <label className="block text-xs uppercase tracking-wider mb-2 dark:text-white font-bold">
                   {t('name')}
                 </label>
                 <input
@@ -50,14 +50,14 @@ function Login() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white px-4 py-3 focus:outline-none focus:border-black dark:focus:border-white"
+                  className="w-full border border-gray-300 dark:border-white dark:bg-black dark:text-white px-4 py-3 focus:outline-none focus:border-black dark:focus:border-white"
                   required={!isLogin}
                 />
               </div>
             )}
 
             <div>
-              <label className="block text-xs uppercase tracking-wider mb-2 dark:text-gray-300 font-bold">
+              <label className="block text-xs uppercase tracking-wider mb-2 dark:text-white font-bold">
                 {t('email')}
               </label>
               <input
@@ -65,13 +65,13 @@ function Login() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white px-4 py-3 focus:outline-none focus:border-black dark:focus:border-white"
+                className="w-full border border-gray-300 dark:border-white dark:bg-black dark:text-white px-4 py-3 focus:outline-none focus:border-black dark:focus:border-white"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs uppercase tracking-wider mb-2 dark:text-gray-300 font-bold">
+              <label className="block text-xs uppercase tracking-wider mb-2 dark:text-white font-bold">
                 {t('password')}
               </label>
               <input
@@ -79,7 +79,7 @@ function Login() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white px-4 py-3 focus:outline-none focus:border-black dark:focus:border-white"
+                className="w-full border border-gray-300 dark:border-white dark:bg-black dark:text-white px-4 py-3 focus:outline-none focus:border-black dark:focus:border-white"
                 required
               />
             </div>
@@ -96,7 +96,7 @@ function Login() {
           <div className="mt-6 text-center">
             <button
               onClick={() => setIsLogin(!isLogin)}
-              className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
+              className="text-sm text-gray-600 dark:text-white hover:text-black dark:hover:text-white"
             >
               {isLogin 
                 ? `Бүртгэл байхгүй юу? ${t('register')}` 
@@ -111,3 +111,4 @@ function Login() {
 }
 
 export default Login;
+

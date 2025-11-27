@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useWishlist } from '../context/WishlistContext';
 
 function Products() {
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [priceRange, setPriceRange] = useState('all');
 
@@ -44,21 +46,21 @@ function Products() {
   });
 
   return (
-    <div className="min-h-screen bg-white py-8">
+    <div className="min-h-screen bg-white dark:bg-black py-8">
       <div className="container mx-auto px-4">
         <div className="mb-8">
-          <h1 className="text-2xl font-black text-black uppercase" style={{fontFamily: 'Montserrat, sans-serif'}}>Бүтээгдэхүүн</h1>
+          <h1 className="text-2xl font-black text-black dark:text-white uppercase" style={{fontFamily: 'Montserrat, sans-serif'}}>Бүтээгдэхүүн</h1>
         </div>
 
         {/* Filters */}
-        <div className="bg-gray-50 p-4 mb-6 border border-gray-100">
+        <div className="bg-gray-50 dark:bg-black p-4 mb-6 border border-gray-100 dark:border-white">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold mb-2 text-black uppercase">Ангилал</label>
+              <label className="block text-xs font-bold mb-2 text-black dark:text-white uppercase">Ангилал</label>
               <select 
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full border border-gray-300 px-3 py-2 text-xs focus:outline-none focus:border-black bg-white"
+                className="w-full border border-gray-300 dark:border-white dark:bg-black dark:text-white px-3 py-2 text-xs focus:outline-none focus:border-black dark:focus:border-white bg-white"
               >
                 {categories.map(cat => (
                   <option key={cat.value} value={cat.value}>{cat.label}</option>
@@ -67,11 +69,11 @@ function Products() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold mb-2 text-black uppercase">Үнийн хүрээ</label>
+              <label className="block text-xs font-bold mb-2 text-black dark:text-white uppercase">Үнийн хүрээ</label>
               <select 
                 value={priceRange}
                 onChange={(e) => setPriceRange(e.target.value)}
-                className="w-full border border-gray-300 px-3 py-2 text-xs focus:outline-none focus:border-black bg-white"
+                className="w-full border border-gray-300 dark:border-white dark:bg-black dark:text-white px-3 py-2 text-xs focus:outline-none focus:border-black dark:focus:border-white bg-white"
               >
                 {priceRanges.map(range => (
                   <option key={range.value} value={range.value}>{range.label}</option>
@@ -84,9 +86,31 @@ function Products() {
         {/* Products Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filteredProducts.map(product => (
-            <div key={product.id} className="group bg-white hover:shadow-md transition-shadow duration-300">
+            <div key={product.id} className="group bg-white dark:bg-black hover:shadow-md transition-shadow duration-300 border border-gray-100 dark:border-white relative">
               <div className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 text-xs font-bold z-10">Sale</div>
-              <div className="relative overflow-hidden aspect-square bg-gray-50">
+              
+              {/* Wishlist Button */}
+              <button
+                onClick={() => {
+                  if (isInWishlist(product.id)) {
+                    removeFromWishlist(product.id);
+                  } else {
+                    addToWishlist(product);
+                  }
+                }}
+                className="absolute top-2 right-2 z-10 bg-white dark:bg-black border border-gray-300 dark:border-white p-2 hover:bg-gray-100 dark:hover:bg-white dark:hover:border-black transition"
+              >
+                <svg 
+                  className={`w-5 h-5 ${isInWishlist(product.id) ? 'text-red-500 fill-current' : 'text-black dark:text-white'}`} 
+                  fill={isInWishlist(product.id) ? 'currentColor' : 'none'} 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+
+              <div className="relative overflow-hidden aspect-square bg-gray-50 dark:bg-black">
                 <img 
                   src={product.image} 
                   alt={product.name}
@@ -94,17 +118,17 @@ function Products() {
                 />
               </div>
               <div className="p-3">
-                <h3 className="text-xs font-bold mb-1 text-black truncate" style={{fontFamily: 'Montserrat, sans-serif'}}>{product.name}</h3>
-                <p className="text-xs text-gray-500 mb-2">
+                <h3 className="text-xs font-bold mb-1 text-black dark:text-white truncate" style={{fontFamily: 'Montserrat, sans-serif'}}>{product.name}</h3>
+                <p className="text-xs text-gray-500 dark:text-white mb-2">
                   Size: {product.size.join(', ')}
                 </p>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-bold text-black">
+                  <span className="text-sm font-bold text-black dark:text-white">
                     {product.price.toLocaleString()}₮
                   </span>
                   <Link
                     to={`/product/${product.id}`}
-                    className="bg-black text-white px-3 py-1.5 hover:bg-gray-800 transition font-bold text-xs uppercase"
+                    className="bg-black dark:bg-white text-white dark:text-black px-3 py-1.5 hover:bg-gray-800 dark:hover:bg-gray-200 transition font-bold text-xs uppercase"
                   >
                     VIEW
                   </Link>
@@ -115,10 +139,10 @@ function Products() {
         </div>
 
         {filteredProducts.length === 0 && (
-          <div className="text-center py-16 bg-gray-50">
+          <div className="text-center py-16 bg-gray-50 dark:bg-black">
             <div className="text-6xl mb-4">😢</div>
-            <p className="text-gray-600 text-lg font-bold">Бүтээгдэхүүн олдсонгүй</p>
-            <p className="text-gray-400 text-sm mt-2">Өөр төрөл эсвэл үнийн хүрээ сонгоод үзнэ үү</p>
+            <p className="text-gray-600 dark:text-white text-lg font-bold">Бүтээгдэхүүн олдсонгүй</p>
+            <p className="text-gray-400 dark:text-white text-sm mt-2">Өөр төрөл эсвэл үнийн хүрээ сонгоод үзнэ үү</p>
           </div>
         )}
       </div>
@@ -127,3 +151,4 @@ function Products() {
 }
 
 export default Products;
+

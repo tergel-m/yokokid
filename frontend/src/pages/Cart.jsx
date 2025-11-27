@@ -39,16 +39,16 @@ function Cart() {
   const total = subtotal + shipping;
 
   return (
-    <div className="min-h-screen bg-white py-8">
+    <div className="min-h-screen bg-white dark:bg-black py-8">
       <div className="container mx-auto px-4">
-        <h1 className="text-2xl font-black mb-6 text-black uppercase" style={{fontFamily: 'Montserrat, sans-serif'}}>Сагс</h1>
+        <h1 className="text-2xl font-black mb-6 text-black dark:text-white uppercase" style={{fontFamily: 'Montserrat, sans-serif'}}>Сагс</h1>
 
         {cartItems.length === 0 ? (
-          <div className="bg-gray-50 p-16 text-center border border-gray-100">
+          <div className="bg-gray-50 dark:bg-black p-16 text-center border border-gray-100 dark:border-white">
             <div className="text-6xl mb-4">🛒</div>
-            <h2 className="text-lg font-bold text-black mb-3">Таны сагс хоосон байна</h2>
-            <p className="text-gray-500 text-sm mb-6">Гоё гутлууд таныг хүлээж байна!</p>
-            <Link to="/products" className="bg-black text-white px-8 py-3 hover:bg-gray-800 transition inline-block font-bold text-sm uppercase tracking-widest">
+            <h2 className="text-lg font-bold text-black dark:text-white mb-3">Таны сагс хоосон байна</h2>
+            <p className="text-gray-500 dark:text-white text-sm mb-6">Гоё гутлууд таныг хүлээж байна!</p>
+            <Link to="/products" className="bg-black dark:bg-white text-white dark:text-black px-8 py-3 hover:bg-gray-800 dark:hover:bg-gray-200 transition inline-block font-bold text-sm uppercase tracking-widest">
               Дэлгүүр үзэх
             </Link>
           </div>
@@ -56,32 +56,32 @@ function Cart() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Cart Items */}
             <div className="lg:col-span-2">
-              <div className="bg-white border border-gray-200">
+              <div className="bg-white dark:bg-black border border-gray-200 dark:border-white">
                 {cartItems.map(item => (
-                  <div key={item.id} className="flex items-center p-4 border-b last:border-b-0 hover:bg-gray-50 transition">
+                  <div key={item.id} className="flex items-center p-4 border-b last:border-b-0 dark:border-white hover:bg-gray-50 dark:hover:bg-black transition">
                     <img 
                       src={item.image} 
                       alt={item.name}
-                      className="w-24 h-24 object-cover bg-gray-50"
+                      className="w-24 h-24 object-cover bg-gray-50 dark:bg-black"
                     />
                     <div className="flex-1 ml-4">
-                      <h3 className="text-sm font-bold mb-1" style={{fontFamily: 'Montserrat, sans-serif'}}>{item.name}</h3>
-                      <p className="text-gray-500 text-xs mb-1">Size: {item.size}</p>
-                      <p className="text-black font-bold text-sm">{item.price.toLocaleString()}₮</p>
+                      <h3 className="text-sm font-bold mb-1 text-black dark:text-white" style={{fontFamily: 'Montserrat, sans-serif'}}>{item.name}</h3>
+                      <p className="text-gray-500 dark:text-white text-xs mb-1">Size: {item.size}</p>
+                      <p className="text-black dark:text-white font-bold text-sm">{item.price.toLocaleString()}₮</p>
                     </div>
                     
                     <div className="flex items-center space-x-3">
-                      <div className="flex items-center border border-gray-300">
+                      <div className="flex items-center border border-gray-300 dark:border-white">
                         <button 
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className="px-2 py-1 hover:bg-gray-100 text-xs font-bold"
+                          className="px-2 py-1 hover:bg-gray-100 dark:hover:bg-white dark:hover:text-black text-xs font-bold dark:text-white"
                         >
                           -
                         </button>
-                        <span className="px-3 py-1 border-x text-xs font-bold">{item.quantity}</span>
+                        <span className="px-3 py-1 border-x dark:border-white text-xs font-bold dark:text-white">{item.quantity}</span>
                         <button 
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="px-2 py-1 hover:bg-gray-100 text-xs font-bold"
+                          className="px-2 py-1 hover:bg-gray-100 dark:hover:bg-white dark:hover:text-black text-xs font-bold dark:text-white">
                         >
                           +
                         </button>
@@ -103,36 +103,36 @@ function Cart() {
 
             {/* Order Summary */}
             <div className="lg:col-span-1">
-              <div className="bg-white border border-gray-200 p-6 sticky top-4">
-                <h2 className="text-lg font-black mb-4 text-black uppercase" style={{fontFamily: 'Montserrat, sans-serif'}}>Захиалгын дүн</h2>
+              <div className="bg-white dark:bg-black border border-gray-200 dark:border-white p-6 sticky top-4">
+                <h2 className="text-lg font-black mb-4 text-black dark:text-white uppercase" style={{fontFamily: 'Montserrat, sans-serif'}}>Захиалгын дүн</h2>
                 
                 <div className="space-y-2 mb-4">
-                  <div className="flex justify-between text-gray-600 text-sm">
+                  <div className="flex justify-between text-gray-600 dark:text-white text-sm">
                     <span>Нийт дүн:</span>
                     <span>{subtotal.toLocaleString()}₮</span>
                   </div>
-                  <div className="flex justify-between text-gray-600 text-sm">
+                  <div className="flex justify-between text-gray-600 dark:text-white text-sm">
                     <span>Хүргэлт:</span>
                     <span>{shipping.toLocaleString()}₮</span>
                   </div>
-                  <div className="border-t pt-2 mt-2">
+                  <div className="border-t dark:border-white pt-2 mt-2">
                     <div className="flex justify-between text-sm font-bold">
-                      <span>Нийт төлөх:</span>
-                      <span className="text-black">{total.toLocaleString()}₮</span>
+                      <span className="dark:text-white">Нийт төлөх:</span>
+                      <span className="text-black dark:text-white">{total.toLocaleString()}₮</span>
                     </div>
                   </div>
                 </div>
 
                 <Link 
                   to="/checkout"
-                  className="w-full bg-black text-white py-3 font-bold text-sm hover:bg-gray-800 transition block text-center uppercase tracking-widest"
+                  className="w-full bg-black dark:bg-white text-white dark:text-black py-3 font-bold text-sm hover:bg-gray-800 dark:hover:bg-gray-200 transition block text-center uppercase tracking-widest"
                 >
                   Төлбөр төлөх
                 </Link>
 
                 <Link 
                   to="/products"
-                  className="w-full mt-3 border border-gray-300 text-black py-3 font-bold text-sm hover:bg-gray-50 transition block text-center uppercase tracking-widest"
+                  className="w-full mt-3 border border-gray-300 dark:border-white text-black dark:text-white py-3 font-bold text-sm hover:bg-gray-50 dark:hover:bg-white dark:hover:text-black transition block text-center uppercase tracking-widest"
                 >
                   Үргэлжлүүлэх
                 </Link>

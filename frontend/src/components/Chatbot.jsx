@@ -52,7 +52,7 @@ function Chatbot() {
       {/* Chat Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 bg-black text-white p-4 rounded-full shadow-lg hover:bg-gray-800 transition-all duration-300 z-50 hover:scale-110"
+        className="fixed bottom-6 right-6 bg-black dark:bg-white text-white dark:text-black p-4 rounded-full shadow-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 z-50 hover:scale-110"
       >
         {isOpen ? (
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -67,16 +67,16 @@ function Chatbot() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-96 bg-white border border-gray-200 shadow-2xl z-50 flex flex-col" style={{ height: '500px' }}>
+        <div className="fixed bottom-24 right-6 w-96 bg-white dark:bg-black border border-gray-200 dark:border-white shadow-2xl z-50 flex flex-col" style={{ height: '500px' }}>
           {/* Header */}
-          <div className="bg-black text-white p-4 flex items-center justify-between">
+          <div className="bg-black dark:bg-black text-white p-4 flex items-center justify-between border-b border-gray-700">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-400 rounded-full"></div>
               <span className="font-bold text-sm uppercase tracking-wider" style={{fontFamily: 'Montserrat, sans-serif'}}>
                 МИША Support
               </span>
             </div>
-            <button onClick={() => setIsOpen(false)} className="hover:text-gray-300">
+            <button onClick={() => setIsOpen(false)} className="hover:text-gray-300 dark:hover:text-gray-400">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -84,7 +84,7 @@ function Chatbot() {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50">
+          <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50 dark:bg-black">
             {messages.map((msg, index) => (
               <div
                 key={index}
@@ -93,8 +93,8 @@ function Chatbot() {
                 <div
                   className={`max-w-xs px-4 py-2 text-sm ${
                     msg.sender === 'user'
-                      ? 'bg-black text-white'
-                      : 'bg-white text-black border border-gray-200'
+                      ? 'bg-black dark:bg-white text-white dark:text-black'
+                      : 'bg-white dark:bg-black text-black dark:text-white border border-gray-200 dark:border-white'
                   }`}
                 >
                   {msg.text}
@@ -104,13 +104,13 @@ function Chatbot() {
           </div>
 
           {/* Quick Replies */}
-          <div className="p-3 bg-white border-t border-gray-200">
+          <div className="p-3 bg-white dark:bg-black border-t border-gray-200 dark:border-white">
             <div className="grid grid-cols-2 gap-2 mb-2">
               {quickReplies.map((reply, index) => (
                 <button
                   key={index}
                   onClick={() => handleQuickReply(reply)}
-                  className="text-xs px-3 py-2 border border-gray-300 hover:bg-gray-50 transition text-left"
+                  className="text-xs px-3 py-2 border border-gray-300 dark:border-white hover:bg-gray-50 dark:hover:bg-white transition text-left dark:text-white"
                 >
                   {reply}
                 </button>
@@ -119,7 +119,7 @@ function Chatbot() {
           </div>
 
           {/* Input */}
-          <div className="p-3 bg-white border-t border-gray-200">
+          <div className="p-3 bg-white dark:bg-black border-t border-gray-200 dark:border-white">
             <div className="flex gap-2">
               <input
                 type="text"
@@ -127,11 +127,11 @@ function Chatbot() {
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="Мессеж бичих..."
-                className="flex-1 border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:border-black"
+                className="flex-1 border border-gray-300 dark:border-white dark:bg-black dark:text-white px-3 py-2 text-sm focus:outline-none focus:border-black dark:focus:border-white"
               />
               <button
                 onClick={handleSend}
-                className="bg-black text-white px-4 py-2 hover:bg-gray-800 transition"
+                className="bg-black dark:bg-white text-white dark:text-black px-4 py-2 hover:bg-gray-800 dark:hover:bg-gray-200 transition"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
@@ -146,3 +146,4 @@ function Chatbot() {
 }
 
 export default Chatbot;
+

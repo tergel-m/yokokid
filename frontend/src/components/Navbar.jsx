@@ -18,7 +18,7 @@ function Navbar() {
   const { user } = useAuth();
 
   return (
-    <nav className="bg-white dark:bg-gray-900 text-black dark:text-white border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+    <nav className="bg-white dark:bg-black text-black dark:text-white border-b border-gray-200 dark:border-white sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="hover:text-gray-600 dark:hover:text-gray-300 transition">
@@ -120,36 +120,36 @@ function Navbar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700 space-y-2">
+          <div className="md:hidden py-4 border-t border-gray-200 dark:border-white space-y-2">
             <Link 
               to="/" 
-              className="block py-2 hover:bg-gray-50 dark:hover:bg-gray-800 text-xs font-bold uppercase tracking-widest"
+              className="block py-2 hover:bg-gray-50 dark:hover:bg-white text-xs font-bold uppercase tracking-widest"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t('home')}
             </Link>
             <Link 
               to="/products" 
-              className="block py-2 hover:bg-gray-50 dark:hover:bg-gray-800 text-xs font-bold uppercase tracking-widest"
+              className="block py-2 hover:bg-gray-50 dark:hover:bg-white text-xs font-bold uppercase tracking-widest"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t('products')}
             </Link>
             <Link 
               to="/about" 
-              className="block py-2 hover:bg-gray-50 dark:hover:bg-gray-800 text-xs font-bold uppercase tracking-widest"
+              className="block py-2 hover:bg-gray-50 dark:hover:bg-white text-xs font-bold uppercase tracking-widest"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t('about')}
             </Link>
             <Link 
               to="/contact" 
-              className="block py-2 hover:bg-gray-50 dark:hover:bg-gray-800 text-xs font-bold uppercase tracking-widest"
+              className="block py-2 hover:bg-gray-50 dark:hover:bg-white text-xs font-bold uppercase tracking-widest"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t('contact')}
             </Link>
-            <div className="flex gap-4 pt-2 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex gap-4 pt-2 border-t border-gray-200 dark:border-white">
               <button 
                 onClick={toggleTheme}
                 className="text-xs font-bold uppercase"
@@ -168,14 +168,14 @@ function Navbar() {
 
         {/* Search Bar - Full Width Below Nav */}
         {searchOpen && (
-          <div className="py-4 border-t border-gray-200 dark:border-gray-700 animate-fadeIn">
+          <div className="py-4 border-t border-gray-200 dark:border-white animate-fadeIn">
             <div className="relative">
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t('search')}
-                className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white px-4 py-3 pr-10 text-sm focus:outline-none focus:border-black dark:focus:border-white"
+                className="w-full border border-gray-300 dark:border-white dark:bg-black dark:text-white px-4 py-3 pr-10 text-sm focus:outline-none focus:border-black dark:focus:border-white"
                 autoFocus
               />
               <button 
@@ -195,3 +195,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
