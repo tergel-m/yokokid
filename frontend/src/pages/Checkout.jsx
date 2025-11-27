@@ -1,6 +1,13 @@
 import { useState } from 'react';
+import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 
 function Checkout() {
+  const { cart, getTotal, coupon, applyCoupon, removeCoupon } = useCart();
+  const { t } = useLanguage();
+  const [couponCode, setCouponCode] = useState('');
+  const [couponError, setCouponError] = useState('');
+  
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -11,6 +18,15 @@ function Checkout() {
     district: '',
     paymentMethod: 'card'
   });
+
+  const handleCouponApply = () => {
+    const success = applyCoupon(couponCode.toUpperCase());
+    if (success) {
+      setCouponError('');
+    } else {
+      setCouponError('Буруу купон код');
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -26,31 +42,16 @@ function Checkout() {
     console.log('Order data:', formData);
   };
 
-  const orderItems = [
-    {
-      id: 1,
-      name: 'Nike Air Max 270',
-      price: 350000,
-      quantity: 1,
-      size: 42
-    },
-    {
-      id: 2,
-      name: 'Adidas Ultraboost',
-      price: 420000,
-      quantity: 2,
-      size: 43
-    }
-  ];
-
-  const subtotal = orderItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const { subtotal, discount, total } = getTotal();
   const shipping = 10000;
-  const total = subtotal + shipping;
+  const finalTotal = total + shipping;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-8">Төлбөр төлөх</h1>
+        <h1 className="text-4xl font-bold mb-8 dark:text-white uppercase" style={{fontFamily: 'Montserrat, sans-serif'}}>
+          {t('checkout')}
+        </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Checkout Form */}
