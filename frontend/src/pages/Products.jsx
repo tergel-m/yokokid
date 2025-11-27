@@ -8,14 +8,14 @@ function Products() {
   const [priceRange, setPriceRange] = useState('all');
 
   const products = [
-    { id: 1, name: 'Мишутка Пүүз', price: 35000, category: 'sport', image: 'https://m.media-amazon.com/images/I/71QqRAciR3L._AC_UY900_.jpg', size: [22, 23, 24, 25, 26] },
-    { id: 2, name: 'Өнгөлөг Сандаал', price: 25000, category: 'casual', image: 'https://www.okabashi.com/cdn/shop/products/toddler-carter-camp-shoes-kiwi-green-5-366423.jpg?v=1686664925&width=1080', size: [20, 21, 22, 23, 24] },
-    { id: 3, name: 'Хөөрхөн Гутал', price: 40000, category: 'winter', image: 'https://img.joomcdn.net/effd185d33413c8596677f687c1445676d53771a_original.jpeg', size: [24, 25, 26, 27] },
-    { id: 4, name: 'Тоглоомон Улавч', price: 18000, category: 'slipper', image: 'https://onyc.in/cdn/shop/files/MC_2337_7c4c88e3-2ab0-48f4-b617-54b7744cbc8f.jpg?v=1739645792&width=2048', size: [18, 19, 20, 21, 22] },
-    { id: 5, name: 'Цэцгэн Пүүз', price: 32000, category: 'sport', image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80', size: [22, 23, 24, 25] },
-    { id: 6, name: 'Хүүхдийн Сандаал', price: 27000, category: 'casual', image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80', size: [20, 21, 22, 23] },
-    { id: 7, name: 'Хөөрхөн Пүүз', price: 36000, category: 'sport', image: 'https://abrosshoes.com/cdn/shop/files/Mojo_0000_GenerativeFill3.jpg?v=1756296291&width=2048', size: [23, 24, 25, 26] },
-    { id: 8, name: 'Зөөлөн Улавч', price: 21000, category: 'slipper', image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80', size: [18, 19, 20, 21] },
+    { id: 1, name: 'Хүүхдийн Пүүз', price: 145000, category: 'sport', image: 'https://m.media-amazon.com/images/I/71QqRAciR3L._AC_UY900_.jpg', size: [22, 23, 24, 25, 26] },
+    { id: 2, name: 'Хүүхдийн Пүүз', price: 75000, category: 'casual', image: 'https://www.okabashi.com/cdn/shop/products/toddler-carter-camp-shoes-kiwi-green-5-366423.jpg?v=1686664925&width=1080', size: [20, 21, 22, 23, 24] },
+    { id: 3, name: 'Хүүхдийн Пүүз', price: 125000, category: 'winter', image: 'https://img.joomcdn.net/effd185d33413c8596677f687c1445676d53771a_original.jpeg', size: [24, 25, 26, 27] },
+    { id: 4, name: 'Хүүхдийн Пүүз', price: 225000, category: 'slipper', image: 'https://onyc.in/cdn/shop/files/MC_2337_7c4c88e3-2ab0-48f4-b617-54b7744cbc8f.jpg?v=1739645792&width=2048', size: [18, 19, 20, 21, 22] },
+    { id: 5, name: 'Хүүхдийн Пүүз', price: 82000, category: 'sport', image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80', size: [22, 23, 24, 25] },
+    { id: 6, name: 'Хүүхдийн Пүүз', price: 67000, category: 'casual', image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80', size: [20, 21, 22, 23] },
+    { id: 7, name: 'Хүүхдийн Пүүз', price: 86000, category: 'sport', image: 'https://abrosshoes.com/cdn/shop/files/Mojo_0000_GenerativeFill3.jpg?v=1756296291&width=2048', size: [23, 24, 25, 26] },
+    { id: 8, name: 'Хүүхдийн Пүүз', price: 120000, category: 'slipper', image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80', size: [18, 19, 20, 21] },
   ];
 
   const categories = [
