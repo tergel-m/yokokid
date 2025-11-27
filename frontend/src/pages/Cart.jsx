@@ -81,7 +81,7 @@ function Cart() {
                         <span className="px-3 py-1 border-x dark:border-white text-xs font-bold dark:text-white">{item.quantity}</span>
                         <button 
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="px-2 py-1 hover:bg-gray-100 dark:hover:bg-white dark:hover:text-black text-xs font-bold dark:text-white">
+                          className="px-2 py-1 hover:bg-gray-100 dark:hover:bg-white dark:hover:text-black text-xs font-bold dark:text-white"
                         >
                           +
                         </button>

@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useWishlist } from '../context/WishlistContext';
+import { useLanguage } from '../context/LanguageContext';
 
 function Home() {
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
+  const { t } = useLanguage();
   
   const featuredProducts = [
     {
@@ -42,16 +44,16 @@ function Home() {
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="text-6xl mb-4"></div>
           <h1 className="text-4xl md:text-5xl font-black italic mb-4 text-black dark:text-white uppercase tracking-tight" style={{fontFamily: 'Montserrat, sans-serif', fontStyle: 'italic'}}>
-            МИША Kids Shoes
+            {t('heroTitle')}
           </h1>
           <p className="text-base mb-8 text-gray-600 dark:text-white max-w-2xl mx-auto">
-            Хүүхдэд зориулсан спорт болон амьдралын хэв маягийн гутал
+            {t('heroSubtitle')}
           </p>
           <Link 
             to="/products" 
             className="inline-block bg-black dark:bg-white text-white dark:text-black px-8 py-3 text-sm font-bold hover:bg-gray-800 dark:hover:bg-gray-200 transition duration-300 uppercase tracking-widest"
           >
-            ДЭЛГҮҮР ҮЗЭХ
+            {t('viewStore')}
           </Link>
         </div>
       </section>
@@ -62,18 +64,18 @@ function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center p-6 bg-white dark:bg-black border border-gray-100 dark:border-white">
               <div className="text-4xl mb-3">🚀</div>
-              <h3 className="text-sm font-bold mb-2 text-black dark:text-white uppercase tracking-wider">Хурдан Хүргэлт</h3>
-              <p className="text-gray-600 dark:text-white text-xs">Бүх захиалгыг 24 цагт хүргэнэ</p>
+              <h3 className="text-sm font-bold mb-2 text-black dark:text-white uppercase tracking-wider">{t('fastDelivery')}</h3>
+              <p className="text-gray-600 dark:text-white text-xs">{t('fastDeliveryDesc')}</p>
             </div>
             <div className="text-center p-6 bg-white dark:bg-black border border-gray-100 dark:border-white">
               <div className="text-4xl mb-3">💎</div>
-              <h3 className="text-sm font-bold mb-2 text-black dark:text-white uppercase tracking-wider">Премиум Чанар</h3>
-              <p className="text-gray-600 dark:text-white text-xs">100% баталгаатай бүтээгдэхүүн</p>
+              <h3 className="text-sm font-bold mb-2 text-black dark:text-white uppercase tracking-wider">{t('premiumQuality')}</h3>
+              <p className="text-gray-600 dark:text-white text-xs">{t('premiumQualityDesc')}</p>
             </div>
             <div className="text-center p-6 bg-white dark:bg-black border border-gray-100 dark:border-white">
               <div className="text-4xl mb-3">🎁</div>
-              <h3 className="text-sm font-bold mb-2 text-black dark:text-white uppercase tracking-wider">Онцгой Санал</h3>
-              <p className="text-gray-600 dark:text-white text-xs">Онцгой хөнгөлөлт, бэлэг</p>
+              <h3 className="text-sm font-bold mb-2 text-black dark:text-white uppercase tracking-wider">{t('specialOffer')}</h3>
+              <p className="text-gray-600 dark:text-white text-xs">{t('specialOfferDesc')}</p>
             </div>
           </div>
         </div>
@@ -84,7 +86,7 @@ function Home() {
         <div className="container mx-auto px-4">
           <div className="mb-8">
             <h2 className="text-2xl font-black text-black dark:text-white uppercase tracking-tight" style={{fontFamily: 'Montserrat, sans-serif'}}>
-              Hot Sale
+              {t('hotSale')}
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -93,7 +95,7 @@ function Home() {
                 key={product.id}
                 className="group relative bg-white dark:bg-black hover:shadow-md transition-shadow duration-300"
               >
-                <div className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 text-xs font-bold z-10">Sale</div>
+                <div className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 text-xs font-bold z-10">{t('sale')}</div>
                 
                 {/* Wishlist Button */}
                 <button
@@ -142,16 +144,16 @@ function Home() {
       <section className="py-16 bg-black text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-black mb-3 uppercase" style={{fontFamily: 'Montserrat, sans-serif'}}>
-            JOIN МИША FAMILY
+            {t('joinFamily')}
           </h2>
           <p className="text-sm mb-6 text-gray-400 max-w-xl mx-auto">
-            Бүртгүүлээд шинэ бүтээгдэхүүн болон онцгой саналуудын талаар мэдээлэл аваарай
+            {t('joinFamilyDesc')}
           </p>
           <Link 
             to="/products"
             className="inline-block bg-white text-black px-8 py-3 text-sm font-bold hover:bg-gray-200 transition duration-300 uppercase tracking-widest"
           >
-            JOIN NOW
+            {t('joinNow')}
           </Link>
         </div>
       </section>
